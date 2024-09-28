@@ -2,7 +2,7 @@ from utils.json_ops import load_json_from_file
 default_values_file_path = 'default_values\default_values.json'
 # Read the Json File
 stored_default_value_dict = load_json_from_file(default_values_file_path)
-btc_excel_folder_path = "D:\\VTS_Software\\downloads\\auto_download_excels\\btc_excels"
+
 
 if not stored_default_value_dict:
     pass
@@ -10,6 +10,7 @@ else:
     # Software folder path
     vts_software_folder_path = stored_default_value_dict["set_software_path"]
     output_excel_folder_path = stored_default_value_dict["output_excel_folder_path"]
+    btc_excel_folder_path = stored_default_value_dict["btc_excel_folder_path"] 
     # cursor wait time
     wait_time_sec = stored_default_value_dict["wait_time_sec"]
     # calender x & y positions

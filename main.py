@@ -24,7 +24,7 @@ app = FastAPI(
 )
 
 # Mount the static files directory
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Default Value Dictionary
 default_value_dict = {"set_software_path": "NA",
@@ -50,6 +50,8 @@ def set_default_values(
                                           example='''D:\\VTS_Software\\downloads\\auto_download_excels\\auto_download_excels_1TF'''),
     output_excel_folder_path: str = Query(..., title="output excel path", description='''please enter the output excel folder path''',
                                           example='''D:\\VTS_Software\\downloads\\output_excels\\output_excel_1TF'''),
+    btc_excel_folder_path: str = Query(..., title="btc folder path", description='''please enter the btc folder path''',
+                                       example='''D:\\VTS_Software\\downloads\\auto_download_excels\\btc_excels'''),
     wait_time_sec: int = Query(..., title="Waiting time in sec",
                                description='''Please enter wait time in sec for change tab''', example=5),
     calender_1_tf: list = Query(..., title="calender x and y positions", description='''Please enter calender_1_tf x,y position in a list format. 
@@ -96,6 +98,7 @@ def set_default_values(
     try:
         default_value_dict["set_software_path"] = vts_software_folder_path
         default_value_dict["output_excel_folder_path"] = output_excel_folder_path
+        default_value_dict["btc_excel_folder_path"] = btc_excel_folder_path
         default_value_dict["wait_time_sec"] = wait_time_sec
         default_value_dict["set_calender_x_y_position"] = [json.loads(calender_1_tf[0]), json.loads(calender_2_tf[0]), json.loads(
             calender_5_tf[0]), json.loads(go_to_calender[0]), json.loads(choose_date[0]), json.loads(go_to_button[0])]
@@ -158,17 +161,6 @@ def auto_download_charts(
         return {"Status": f"Auto Download Failed due to : {e}"}
 
 
-@app.post("/set_auto_alerts/", tags=["Auto Download"])
-def set_auto_alerts(
-        select_time_frame: int = Query(..., title="Select Time Frame",
-                                       description='''Please enter the Time Frame to Auto Download 1/2/5 Note: Please set the date first before auto download''', example=1),
-        num_of_charts: int = Query(..., title="Chart Download",
-                                   description='''Please Enter the Number of Chart to download From 1 to 298 Note: Please set the date first before auto download''', example=50)
-):
-    result = auto_alarm(num_of_charts, select_time_frame)
-    return {"Status": result}
-
-
 @app.get("/get_missing_coin_data/", tags=["File Operations"])
 def get_missing_coin_data(
         Choose_Time_Frame: int = Query(..., title="Choose_Time_Frame",
@@ -194,11 +186,13 @@ def get_missing_coin_data(
 @app.get("/analyse_excel_data/", tags=["Trading Analysis"])
 def analyse_excel_data(
     Choose_Time_Frame: int = Query(..., title="Choose_Time_Frame",
-                                   description='''Please Choose Time Frame Either 1/2/5''', example=2)
+                                   description='''Please Choose Time Frame Either 1/2/5''', example=2),
+    output_excel_folder_path: str = Query(..., title="output excel path", description='''please enter the output excel folder path''',
+                                          example='''D:\\VTS_Software\\downloads\\output_excels\\output_excel_1TF'''),
 ):
     start = time.time()
     try:
-        output_excel_folder_path = "D:\\VTS_Software\\downloads\\output_excels\\output_excel_1TF"
+        # output_excel_folder_path = "D:\\VTS_Software\\downloads\\output_excels\\output_excel_1TF"
         if Choose_Time_Frame == 1:
             auto_download_excel_path = str(vts_software_folder_path)
             output_excel_folder_path = str(output_excel_folder_path)
@@ -250,6 +244,17 @@ def analyse_excel_data(
                 "Download_Excel_Path": output_excel_folder_path}
     except Exception as e:
         return {"Response": f"Unable to analyse data due to : {e}"}
+
+
+@app.post("/set_auto_alerts/", tags=["Trading Analysis"])
+def set_auto_alerts(
+        select_time_frame: int = Query(..., title="Select Time Frame",
+                                       description='''Please enter the Time Frame to Auto Download 1/2/5 Note: Please set the date first before auto download''', example=1),
+        num_of_charts: int = Query(..., title="Chart Download",
+                                   description='''Please Enter the Number of Chart to download From 1 to 298 Note: Please set the date first before auto download''', example=50)
+):
+    result = auto_alarm(num_of_charts, select_time_frame)
+    return {"Status": result}
 
 
 @app.get("/btc_swing_info/", tags=["Trading Analysis"])
