@@ -15,6 +15,10 @@ env.bak/
 venv.bak/
 .virtualenv/
 
+# except the download files
+**/downloads/
+
+
 # Pipenv
 .Pipfile
 .Pipfile.lock
