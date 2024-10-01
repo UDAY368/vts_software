@@ -11,7 +11,7 @@ stored_default_value_dict = load_json_from_file(default_values_file_path)
 if not stored_default_value_dict:
     pass
 else:
-    from default_values.constants import vts_software_folder_path, wait_time_sec, calender_1_tf, calender_2_tf, calender_5_tf, go_to_calender, choose_date, go_to_button, arrow_button, export_chart, chart_button, one_TF_chart, two_TF_chart, five_TF_chart, export_button,initial_click,indicator_click,dots_click,add_alert,nh_create_button,click_condition,choose_low,nl_create_button
+    from default_values.constants import vts_software_folder_path, wait_time_sec, calender_1_tf, calender_2_tf, calender_5_tf, go_to_calender, choose_date, go_to_button, arrow_button, export_chart, chart_button, one_TF_chart, two_TF_chart, five_TF_chart, export_button, initial_click, indicator_click, dots_click, add_alert, nh_create_button, click_condition, choose_low, nl_create_button
 
 
 def display_position():
@@ -118,7 +118,7 @@ def auto_download_excel(total_charts, select_time_frame):
         for charts_position, calender_click in zip(charts_positions, calender_clicks):
             print("charts_position", charts_position)
             print("calender_click", calender_click)
-            calender_click_fun(calender_click)
+            # calender_click_fun(calender_click)
             select_date(go_to_calender, choose_date, go_to_button)
             pyautogui.sleep(1)
             auto_download_excel_pos(charts_position)
@@ -150,7 +150,7 @@ def auto_alarm(total_charts, select_time_frame):
             pyautogui.sleep(3)
 
     def set_alerts():
-        sleep_time = 0.3
+        sleep_time = 0.1
         # initial_click = [782, 443]
         initial_click_x, initial_click_y = initial_click[0], initial_click[1]
         pyautogui.moveTo(initial_click_x, initial_click_y,

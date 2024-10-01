@@ -1025,9 +1025,11 @@ def get_swing_zero_rand_per_cluster_lst(coin_name, coin_time_tf, zero_rand_swing
         t_5_lrg_pp_zero_rand_sp_lst = str(
             sorted(pstv_per_swing_zero_rand_lst, key=lambda x: x[1], reverse=True)[:5])
     else:
-        t_10_lrg_pp_zero_rand_sp_lst = [0]
-        t_10_sml_pp_zero_rand_sp_lst = [0]
+        # Add the corner conditions
+        t_10_lrg_pp_zero_rand_sp_lst = [[0, 0]]
+        t_10_sml_pp_zero_rand_sp_lst = [[0, 0]]
         t_5_lrg_pp_zero_rand_sp_lst = str([0])
+        pstv_per_swing_zero_rand_lst = [[0, 0]]
 
     if len(neg_per_swing_zero_rand_lst) >= 10:
         t_10_lrg_np_zero_rand_sp_lst = sorted(
@@ -1044,9 +1046,11 @@ def get_swing_zero_rand_per_cluster_lst(coin_name, coin_time_tf, zero_rand_swing
         t_5_lrg_np_zero_rand_sp_lst = str(
             sorted(neg_per_swing_zero_rand_lst, key=lambda x: x[1], reverse=False)[:5])
     else:
-        t_10_lrg_np_zero_rand_sp_lst = [0]
-        t_10_sml_np_zero_rand_sp_lst = [0]
+        # Add the corner conditions
+        t_10_lrg_np_zero_rand_sp_lst = [[0, 0]]
+        t_10_sml_np_zero_rand_sp_lst = [[0, 0]]
         t_5_lrg_np_zero_rand_sp_lst = str([0])
+        neg_per_swing_zero_rand_lst = [[0, 0]]
 
     # Zero rand info
     all_swings_zero_rand_count = len(zero_rand_swing_per_lst)
@@ -1940,6 +1944,8 @@ def get_swing_time_and_rsi_diff_lst(coin_name, coin_time_tf, all_swing_per_rand_
         [swing[2] for swing in t_10_sml_np_sp_time_lst]), 2)
 
     # Zero rand swing time info
+    if len(swing_per_zero_rand_time_rsi_diff_lst) == 0:
+        swing_per_zero_rand_time_rsi_diff_lst = [[0, 0, 0, 0]]
     zero_rand_total_swings_time = round(
         sum([swing[2] for swing in swing_per_zero_rand_time_rsi_diff_lst]), 2)
     zero_rand_max_swings_time = round(
@@ -1952,6 +1958,8 @@ def get_swing_time_and_rsi_diff_lst(coin_name, coin_time_tf, all_swing_per_rand_
         [swing[2] for swing in swing_per_zero_rand_time_rsi_diff_lst]), 2)
 
     # Positive Zero rand swing time info
+    if len(pstv_swing_per_zero_rand_time_rsi_diff_lst) == 0:
+        pstv_swing_per_zero_rand_time_rsi_diff_lst = [[0, 0, 0, 0]]
     zero_rand_pstv_sp_total_swings_time = round(
         sum([swing[2] for swing in pstv_swing_per_zero_rand_time_rsi_diff_lst]), 2)
     zero_rand_pstv_sp_total_swings_per_change = round(
@@ -1966,6 +1974,8 @@ def get_swing_time_and_rsi_diff_lst(coin_name, coin_time_tf, all_swing_per_rand_
         [swing[2] for swing in pstv_swing_per_zero_rand_time_rsi_diff_lst]), 2)
 
     # Negative Zero rand swing time info
+    if len(neg_swing_per_zero_rand_time_rsi_diff_lst) == 0:
+        neg_swing_per_zero_rand_time_rsi_diff_lst = [[0,0,0,0]]
     zero_rand_neg_sp_total_swings_time = round(
         sum([swing[2] for swing in neg_swing_per_zero_rand_time_rsi_diff_lst]), 2)
     zero_rand_neg_sp_total_swings_per_change = round(
