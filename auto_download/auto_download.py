@@ -108,7 +108,7 @@ def auto_download_excel(total_charts, select_time_frame):
     def go_to_next_chart():
         pyautogui.press('down')
         if select_time_frame == 1:
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(1.5)
         else:
             pyautogui.sleep(3)
 
@@ -119,8 +119,8 @@ def auto_download_excel(total_charts, select_time_frame):
             print("charts_position", charts_position)
             print("calender_click", calender_click)
             # calender_click_fun(calender_click)
-            select_date(go_to_calender, choose_date, go_to_button)
-            pyautogui.sleep(1)
+            # select_date(go_to_calender, choose_date, go_to_button)
+            # pyautogui.sleep(1)
             auto_download_excel_pos(charts_position)
         end = time.time()
         print(f"Time taken by {i} chart is : {end-start} secs")

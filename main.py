@@ -165,7 +165,7 @@ def auto_download_charts(
 def get_missing_coin_data(
         Choose_Time_Frame: int = Query(..., title="Choose_Time_Frame",
                                        description='''Please Choose Time Frame Either 5 or 1''', example=2),
-        csv_files_min_size: int = Query(..., title="csv_files_min_size", description='''Please Choose Minimum CSV file size in KB''', example=150)):
+        csv_files_min_size: int = Query(..., title="csv_files_min_size", description='''Please Choose Minimum CSV file size in KB''', example=30)):
     if Choose_Time_Frame == 1:
         auto_download_excel_path = str(vts_software_folder_path)
     elif Choose_Time_Frame == 2:
