@@ -232,8 +232,8 @@ def analyse_excel_data(
         layer_3_rank_excel_export(layer_3_str_info_excel_lst, layer_3_rank_1_excel_lst_rank, layer_3_rank_2_excel_lst_rank, layer_3_rank_3_excel_lst_rank, layer_3_rank_4_excel_lst_rank, layer_3_rank_5_excel_lst_rank,
                                   layer_3_rank_6_excel_lst_rank, output_excel_folder_path, Choose_Time_Frame, layer_3_rank_1_lst, layer_3_rank_2_lst, layer_3_rank_3_lst, layer_3_rank_4_lst, layer_3_rank_5_lst, layer_3_rank_6_lst, layer_3_rank_7_lst)
 
-        top_50_coins_lst = [coin[1] for coin in (layer_3_rank_1_lst[:50] if len(
-            layer_3_rank_1_lst) >= 50 else layer_3_rank_1_lst)]
+        top_50_coins_lst = [coin[1] for coin in (layer_3_rank_7_lst[:50] if len(
+            layer_3_rank_7_lst) >= 50 else layer_3_rank_7_lst)]
 
         top_50_coins_lst = ["BINANCE:"+coin for coin in top_50_coins_lst]
 

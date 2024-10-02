@@ -145,7 +145,7 @@ def auto_alarm(total_charts, select_time_frame):
     def go_to_next_chart():
         pyautogui.press('down')
         if select_time_frame == 1:
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(1.5)
         else:
             pyautogui.sleep(3)
 
