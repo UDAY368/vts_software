@@ -108,7 +108,7 @@ def auto_download_excel(total_charts, select_time_frame):
     def go_to_next_chart():
         pyautogui.press('down')
         if select_time_frame == 1:
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(1.5)
         else:
             pyautogui.sleep(3)
 
@@ -119,8 +119,8 @@ def auto_download_excel(total_charts, select_time_frame):
             print("charts_position", charts_position)
             print("calender_click", calender_click)
             # calender_click_fun(calender_click)
-            select_date(go_to_calender, choose_date, go_to_button)
-            pyautogui.sleep(1)
+            # select_date(go_to_calender, choose_date, go_to_button)
+            # pyautogui.sleep(1)
             auto_download_excel_pos(charts_position)
         end = time.time()
         print(f"Time taken by {i} chart is : {end-start} secs")
@@ -145,7 +145,7 @@ def auto_alarm(total_charts, select_time_frame):
     def go_to_next_chart():
         pyautogui.press('down')
         if select_time_frame == 1:
-            pyautogui.sleep(2.5)
+            pyautogui.sleep(1.5)
         else:
             pyautogui.sleep(3)
 
@@ -156,36 +156,38 @@ def auto_alarm(total_charts, select_time_frame):
         pyautogui.moveTo(initial_click_x, initial_click_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
         # indicator_click = [237, 152]
         indicator_click_x, indicator_click_y = indicator_click[0], indicator_click[1]
         pyautogui.moveTo(indicator_click_x, indicator_click_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
+        # For High Code
         # dots_click = [417, 151]
         dots_click_x, dots_click_y = dots_click[0], dots_click[1]
         pyautogui.moveTo(dots_click_x, dots_click_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(0.5)
+        pyautogui.sleep(0.25)
 
         # add_alert = [631, 195]
         add_alert_x, add_alert_y = add_alert[0], add_alert[1]
         pyautogui.moveTo(add_alert_x, add_alert_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
         # nh_create_button = [1184, 961]
         nh_create_button_x, nh_create_button_y = nh_create_button[0], nh_create_button[1]
         pyautogui.moveTo(nh_create_button_x, nh_create_button_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
+        # For Low code
         # dots_click = [417, 151]
         dots_click_x, dots_click_y = dots_click[0], dots_click[1]
         pyautogui.moveTo(dots_click_x, dots_click_y,
@@ -198,28 +200,100 @@ def auto_alarm(total_charts, select_time_frame):
         pyautogui.moveTo(add_alert_x, add_alert_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
         # click_condition = [984, 344]
         click_condition_x, click_condition_y = click_condition[0], click_condition[1]
         pyautogui.moveTo(click_condition_x, click_condition_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
         # choose_low = [979, 120]
         choose_low_x, choose_low_y = choose_low[0], choose_low[1]
         pyautogui.moveTo(choose_low_x, choose_low_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
 
         # nl_create_button = [1184, 961]
         nl_create_button_x, nl_create_button_y = nl_create_button[0], nl_create_button[1]
         pyautogui.moveTo(nl_create_button_x, nl_create_button_y,
                          duration=click_duration)
         pyautogui.click()
-        pyautogui.sleep(sleep_time)
+        # pyautogui.sleep(sleep_time)
+
+        # For Lower High
+        # dots_click = [417, 151]
+        dots_click_x, dots_click_y = dots_click[0], dots_click[1]
+        pyautogui.moveTo(dots_click_x, dots_click_y,
+                         duration=click_duration)
+        pyautogui.click()
+        pyautogui.sleep(0.5)
+
+        # add_alert = [631, 195]
+        add_alert_x, add_alert_y = add_alert[0], add_alert[1]
+        pyautogui.moveTo(add_alert_x, add_alert_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # click_condition = [984, 344]
+        click_condition_x, click_condition_y = click_condition[0], click_condition[1]
+        pyautogui.moveTo(click_condition_x, click_condition_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # choose_low = [979, 120]
+        choose_low_x, choose_low_y = 981, 199
+        pyautogui.moveTo(choose_low_x, choose_low_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # nl_create_button = [1184, 961]
+        nl_create_button_x, nl_create_button_y = nl_create_button[0], nl_create_button[1]
+        pyautogui.moveTo(nl_create_button_x, nl_create_button_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # For Higher Low code
+        # dots_click = [417, 151]
+        dots_click_x, dots_click_y = dots_click[0], dots_click[1]
+        pyautogui.moveTo(dots_click_x, dots_click_y,
+                         duration=click_duration)
+        pyautogui.click()
+        pyautogui.sleep(0.5)
+
+        # add_alert = [631, 195]
+        add_alert_x, add_alert_y = add_alert[0], add_alert[1]
+        pyautogui.moveTo(add_alert_x, add_alert_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # click_condition = [984, 344]
+        click_condition_x, click_condition_y = click_condition[0], click_condition[1]
+        pyautogui.moveTo(click_condition_x, click_condition_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # choose_low = [979, 120]
+        choose_low_x, choose_low_y = 981, 244
+        pyautogui.moveTo(choose_low_x, choose_low_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
+
+        # nl_create_button = [1184, 961]
+        nl_create_button_x, nl_create_button_y = nl_create_button[0], nl_create_button[1]
+        pyautogui.moveTo(nl_create_button_x, nl_create_button_y,
+                         duration=click_duration)
+        pyautogui.click()
+        # pyautogui.sleep(sleep_time)
 
     total_start = time.time()
     for i in range(1, total_charts+1):

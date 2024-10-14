@@ -1975,7 +1975,7 @@ def get_swing_time_and_rsi_diff_lst(coin_name, coin_time_tf, all_swing_per_rand_
 
     # Negative Zero rand swing time info
     if len(neg_swing_per_zero_rand_time_rsi_diff_lst) == 0:
-        neg_swing_per_zero_rand_time_rsi_diff_lst = [[0,0,0,0]]
+        neg_swing_per_zero_rand_time_rsi_diff_lst = [[0, 0, 0, 0]]
     zero_rand_neg_sp_total_swings_time = round(
         sum([swing[2] for swing in neg_swing_per_zero_rand_time_rsi_diff_lst]), 2)
     zero_rand_neg_sp_total_swings_per_change = round(
@@ -2724,6 +2724,11 @@ def get_final_coin_rank_lst(layer_3_rank_2_lst, layer_3_rank_3_lst, layer_3_rank
     rounded_layer_3_rank_7_lst = [
         [item[0], item[1], item[2], round(item[3], 2)] for item in layer_3_rank_7_lst]
 
+    rounded_layer_3_rank_7_lst = [coin[1:]
+                                  for coin in rounded_layer_3_rank_7_lst]
+    for index, coin in enumerate(rounded_layer_3_rank_7_lst):
+        coin.insert(0, index+1)
+
     return rounded_layer_3_rank_7_lst
 
 
@@ -2745,7 +2750,7 @@ def get_coin_rank_step_stop_info(coin):
 
     if last_s_rank_rand_per <= 0.5:
         if total_s_rank_rand_per <= 0.5:
-            coin_stop_loss = 0.75
+            coin_stop_loss = 0.85
         elif 0.5 < total_s_rank_rand_per <= 0.75:
             coin_stop_loss = 0.85
         elif 0.75 < total_s_rank_rand_per <= 1:
@@ -2756,58 +2761,58 @@ def get_coin_rank_step_stop_info(coin):
             coin_stop_loss = 1
     elif 0.5 < last_s_rank_rand_per <= 1:
         if 0.5 < total_s_rank_rand_per <= 1:
-            coin_stop_loss = 1
-        elif total_s_rank_rand_per <= 0.5:
-            coin_stop_loss = 1
-        elif 1 < total_s_rank_rand_per <= 1.5:
-            coin_stop_loss = 1.15
-        elif 1.5 < total_s_rank_rand_per <= 2:
             coin_stop_loss = 1.25
+        elif total_s_rank_rand_per <= 0.5:
+            coin_stop_loss = 1.25
+        elif 1 < total_s_rank_rand_per <= 1.5:
+            coin_stop_loss = 1.5
+        elif 1.5 < total_s_rank_rand_per <= 2:
+            coin_stop_loss = 1.5
         elif 2 < total_s_rank_rand_per <= 2.5:
             coin_stop_loss = 1.5
         else:
             coin_stop_loss = 1.5
     elif 1 < last_s_rank_rand_per <= 1.5:
         if 1 < total_s_rank_rand_per <= 1.5:
-            coin_stop_loss = 1.25
+            coin_stop_loss = 1.65
         elif total_s_rank_rand_per <= 1:
-            coin_stop_loss = 1.25
+            coin_stop_loss = 1.65
         elif 1.5 < total_s_rank_rand_per <= 2:
-            coin_stop_loss = 1.35
+            coin_stop_loss = 1.75
         elif 2 < total_s_rank_rand_per <= 2.5:
-            coin_stop_loss = 1.5
+            coin_stop_loss = 1.75
         elif 2.5 < total_s_rank_rand_per <= 3:
-            coin_stop_loss = 1.75
+            coin_stop_loss = 1.85
         else:
-            coin_stop_loss = 1.75
+            coin_stop_loss = 1.85
     elif 1.5 < last_s_rank_rand_per <= 2:
         if 1.5 < total_s_rank_rand_per <= 2:
-            coin_stop_loss = 1.5
-        elif total_s_rank_rand_per <= 1.5:
-            coin_stop_loss = 1.5
-        elif 2 < total_s_rank_rand_per <= 2.5:
-            coin_stop_loss = 1.75
-        elif 2.5 < total_s_rank_rand_per <= 3:
             coin_stop_loss = 1.85
+        elif total_s_rank_rand_per <= 1.5:
+            coin_stop_loss = 1.85
+        elif 2 < total_s_rank_rand_per <= 2.5:
+            coin_stop_loss = 2
+        elif 2.5 < total_s_rank_rand_per <= 3:
+            coin_stop_loss = 2
         elif 3 < total_s_rank_rand_per <= 3.5:
-            coin_stop_loss = 1.9
+            coin_stop_loss = 2
         else:
-            coin_stop_loss = 1.9
+            coin_stop_loss = 2
     elif 2 < last_s_rank_rand_per <= 2.5:
         if 2 < total_s_rank_rand_per <= 2.5:
-            coin_stop_loss = 1.75
+            coin_stop_loss = 2.25
         elif total_s_rank_rand_per <= 2:
-            coin_stop_loss = 1.75
+            coin_stop_loss = 2.15
         elif 2.5 < total_s_rank_rand_per <= 3:
-            coin_stop_loss = 1.85
+            coin_stop_loss = 2.25
         elif 3 < total_s_rank_rand_per <= 3.5:
-            coin_stop_loss = 1.95
+            coin_stop_loss = 2.25
         elif 3.5 < total_s_rank_rand_per <= 4:
-            coin_stop_loss = 2
+            coin_stop_loss = 2.25
         else:
-            coin_stop_loss = 2
+            coin_stop_loss = 2.5
     else:
-        coin_stop_loss = 1.85
+        coin_stop_loss = 2.5
     # We can modify the values
     coin_step = 0.25
     coin_step_stop_loss = [coin_name, coin_time_tf, coin_stop_loss, coin_step]

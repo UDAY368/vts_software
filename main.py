@@ -165,7 +165,7 @@ def auto_download_charts(
 def get_missing_coin_data(
         Choose_Time_Frame: int = Query(..., title="Choose_Time_Frame",
                                        description='''Please Choose Time Frame Either 5 or 1''', example=2),
-        csv_files_min_size: int = Query(..., title="csv_files_min_size", description='''Please Choose Minimum CSV file size in KB''', example=150)):
+        csv_files_min_size: int = Query(..., title="csv_files_min_size", description='''Please Choose Minimum CSV file size in KB''', example=30)):
     if Choose_Time_Frame == 1:
         auto_download_excel_path = str(vts_software_folder_path)
     elif Choose_Time_Frame == 2:
@@ -232,8 +232,8 @@ def analyse_excel_data(
         layer_3_rank_excel_export(layer_3_str_info_excel_lst, layer_3_rank_1_excel_lst_rank, layer_3_rank_2_excel_lst_rank, layer_3_rank_3_excel_lst_rank, layer_3_rank_4_excel_lst_rank, layer_3_rank_5_excel_lst_rank,
                                   layer_3_rank_6_excel_lst_rank, output_excel_folder_path, Choose_Time_Frame, layer_3_rank_1_lst, layer_3_rank_2_lst, layer_3_rank_3_lst, layer_3_rank_4_lst, layer_3_rank_5_lst, layer_3_rank_6_lst, layer_3_rank_7_lst)
 
-        top_50_coins_lst = [coin[1] for coin in (layer_3_rank_1_lst[:50] if len(
-            layer_3_rank_1_lst) >= 50 else layer_3_rank_1_lst)]
+        top_50_coins_lst = [coin[1] for coin in (layer_3_rank_7_lst[:50] if len(
+            layer_3_rank_7_lst) >= 50 else layer_3_rank_7_lst)]
 
         top_50_coins_lst = ["BINANCE:"+coin for coin in top_50_coins_lst]
 
