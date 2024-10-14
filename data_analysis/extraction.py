@@ -29,7 +29,7 @@ def get_time_data(ct_time, csv_file):
 def get_coin_data(csv_file) -> List[str]:
     try:
         split_data = csv_file.split(".")
-        coin_name = split_data[0][8:]
+        coin_name = split_data[0][6:]
         tf_data_coma = split_data[1].split(",")
         tf_data_strip = tf_data_coma[1].strip()
         tf_data_under = tf_data_strip.split("_")
